@@ -9,7 +9,7 @@ Creditos a: https://www.configuroweb.com/carrito-de-compras-en-php-y-mysql/
 * Crear una base en phpmyadmin de nombre "carrito"
 * Copiar el siguiente Query dentro de la base de datos
 
-//**
+//
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
@@ -206,4 +206,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-**//
+
