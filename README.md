@@ -2,6 +2,8 @@
 
 Proyecto para ingenieria de Software basado en un carrito de compras, utilizando PHP y MYSQL
 
+Es necesario tener instalado xampp: https://www.apachefriends.org/es/index.html
+
 Creditos a: https://www.configuroweb.com/carrito-de-compras-en-php-y-mysql/
 
 # Como acceder a la base de datos:
