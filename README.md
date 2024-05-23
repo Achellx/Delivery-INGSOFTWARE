@@ -9,7 +9,7 @@ Creditos a: https://www.configuroweb.com/carrito-de-compras-en-php-y-mysql/
 * Crear una base en phpmyadmin de nombre "carrito"
 * Copiar el siguiente Query dentro de la base de datos
 
-// SQL 
+```
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
