@@ -24,9 +24,8 @@ $custRow = $query->fetch_assoc();
 <head>
     <title>Pagos - PHP Carrito de compras Tutorial</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         .container {
             padding: 20px;
@@ -46,6 +45,7 @@ $custRow = $query->fetch_assoc();
         .footBtn {
             width: 95%;
             float: left;
+            margin-top: 20px;
         }
 
         .orderBtn {
@@ -56,24 +56,28 @@ $custRow = $query->fetch_assoc();
 
 <body>
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-
+        <div class="card">
+            <div class="card-header">
                 <ul class="nav nav-pills">
-                    <li role="presentation"><a href="index.php">Inicio</a></li>
-                    <li role="presentation"><a href="VerCarta.php">Carrito de Compras</a></li>
-                    <li role="presentation" class="active"><a href="Pagos.php">Pagar</a></li>
-                    <li role="presentation"><a href="https://www.configuroweb.com/46-aplicaciones-gratuitas-en-php-python-y-javascript/#Aplicaciones-gratuitas-en-PHP,-Python-y-Javascript">ConfiguroWeb</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="index.php">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="VerCarta.php">Carrito de Compras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active bg-success" href="Pagos.php">Pagar</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="panel-body">
+            <div class="card-body">
                 <h1>Vista previa de la Orden</h1>
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Producto</th>
-                            <th>Pricio</th>
+                            <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Sub total</th>
                         </tr>
@@ -87,15 +91,15 @@ $custRow = $query->fetch_assoc();
                         ?>
                                 <tr>
                                     <td><?php echo $item["name"]; ?></td>
-                                    <td><?php echo '$' . $item["price"] . ' COP'; ?></td>
+                                    <td><?php echo '$' . $item["price"] . ' MX'; ?></td>
                                     <td><?php echo $item["qty"]; ?></td>
-                                    <td><?php echo '$' . $item["subtotal"] . ' COP'; ?></td>
+                                    <td><?php echo '$' . $item["subtotal"] . ' MX'; ?></td>
                                 </tr>
                             <?php }
                         } else { ?>
                             <tr>
                                 <td colspan="4">
-                                    <p>No hay articulos en tu carta......</p>
+                                    <p>No hay artículos en tu carrito......</p>
                                 </td>
                             <?php } ?>
                     </tbody>
@@ -103,7 +107,7 @@ $custRow = $query->fetch_assoc();
                         <tr>
                             <td colspan="3"></td>
                             <?php if ($cart->total_items() > 0) { ?>
-                                <td class="text-center"><strong>Total <?php echo '$' . $cart->total() . ' COP'; ?></strong></td>
+                                <td class="text-center"><strong>Total <?php echo '$' . $cart->total() . ' MX'; ?></strong></td>
                             <?php } ?>
                         </tr>
                     </tfoot>
@@ -116,14 +120,14 @@ $custRow = $query->fetch_assoc();
                     <p><?php echo $custRow['address']; ?></p>
                 </div>
                 <div class="footBtn">
-                    <a href="index.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Continue Comprando</a>
-                    <a href="AccionCarta.php?action=placeOrder" class="btn btn-success orderBtn">Realizar pedido <i class="glyphicon glyphicon-menu-right"></i></a>
+                    <a href="index.php" class="btn btn-warning"><i class="bi bi-arrow-left"></i> Continuar Comprando</a>
+                    <a href="AccionCarta.php?action=placeOrder" class="btn btn-success orderBtn">Realizar pedido <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="panel-footer">Para más desarrollos ingresa en <a href"https://www.configuroweb.com/46-aplicaciones-gratuitas-en-php-python-y-javascript/#Aplicaciones-gratuitas-en-PHP,-Python-y-Javascript">ConfiguroWeb</a></div>
         </div>
         <!--Panek cierra-->
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -9,9 +9,8 @@ $cart = new Cart;
 <head>
     <title>View Cart - PHP Shopping Cart Tutorial</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         .container {
             padding: 20px;
@@ -23,40 +22,40 @@ $cart = new Cart;
     </style>
     <script>
         function updateCartItem(obj, id) {
-            $.get("cartAction.php", {
-                action: "updateCartItem",
-                id: id,
-                qty: obj.value
-            }, function(data) {
-                if (data == 'ok') {
-                    location.reload();
-                } else {
-                    alert('Cart update failed, please try again.');
-                }
-            });
+            fetch(`cartAction.php?action=updateCartItem&id=${id}&qty=${obj.value}`)
+                .then(response => response.text())
+                .then(data => {
+                    if (data == 'ok') {
+                        location.reload();
+                    } else {
+                        alert('Cart update failed, please try again.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         }
     </script>
-</head>
 </head>
 
 <body>
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-
+        <div class="card">
+            <div class="card-header">
                 <ul class="nav nav-pills">
-                    <li role="presentation"><a href="index.php">Inicio</a></li>
-                    <li role="presentation" class="active"><a href="VerCarta.php">Carrito de Compras</a></li>
-                    <li role="presentation"><a href="Pagos.php">Pagar</a></li>
-                    <li role="presentation"><a href="https://www.configuroweb.com/46-aplicaciones-gratuitas-en-php-python-y-javascript/#Aplicaciones-gratuitas-en-PHP,-Python-y-Javascript">ConfiguroWeb</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="index.php">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active bg-success" href="VerCarta.php">Carrito de Compras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="Pagos.php">Pagar</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="panel-body">
-
-
+            <div class="card-body">
                 <h1>Carrito de compras</h1>
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -75,11 +74,11 @@ $cart = new Cart;
                         ?>
                                 <tr>
                                     <td><?php echo $item["name"]; ?></td>
-                                    <td><?php echo '$' . $item["price"] . ' COP'; ?></td>
+                                    <td><?php echo '$' . $item["price"] . ' MX'; ?></td>
                                     <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
-                                    <td><?php echo '$' . $item["subtotal"] . ' COP'; ?></td>
+                                    <td><?php echo '$' . $item["subtotal"] . ' MX'; ?></td>
                                     <td>
-                                        <a href="AccionCarta.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirma eliminar?')"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a href="AccionCarta.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirma eliminar?')"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php }
@@ -92,22 +91,20 @@ $cart = new Cart;
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td><a href="index.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Volver a la tienda</a></td>
+                            <td><a href="index.php" class="btn btn-warning"><i class="bi bi-arrow-left"></i> Volver a la tienda</a></td>
                             <td colspan="2"></td>
                             <?php if ($cart->total_items() > 0) { ?>
-                                <td class="text-center"><strong>Total <?php echo '$' . $cart->total() . ' COP'; ?></strong></td>
-                                <td><a href="Pagos.php" class="btn btn-success btn-block">Pagos <i class="glyphicon glyphicon-menu-right"></i></a></td>
+                                <td class="text-center"><strong>Total <?php echo '$' . $cart->total() . ' MX'; ?></strong></td>
+                                <td><a href="Pagos.php" class="btn btn-success btn-block">Pagos <i class="bi bi-arrow-right"></i></a></td>
                             <?php } ?>
                         </tr>
                     </tfoot>
                 </table>
 
             </div>
-            <div class="panel-footer">Para más desarrollos ingresa en <a href"https://www.configuroweb.com/46-aplicaciones-gratuitas-en-php-python-y-javascript/#Aplicaciones-gratuitas-en-PHP,-Python-y-Javascript">ConfiguroWeb</a></div>
         </div>
-        <!--Panek cierra-->
-
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
