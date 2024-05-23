@@ -8,7 +8,7 @@ Creditos a: https://www.configuroweb.com/carrito-de-compras-en-php-y-mysql/
 
 # Como acceder a la base de datos:
 
-1. Crear una base en phpmyadmin de nombre "carrito"
+1. Crear una base en phpmyadmin de nombre **"carrito"**
 2. Copiar el siguiente Query dentro de la base de datos
 
 ```
