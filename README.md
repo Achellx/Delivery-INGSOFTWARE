@@ -1,6 +1,6 @@
 # Delivery-INGSOFTWARE
 
-Proyecto para ingenieria de Software basado en un carrito de compras, utilizando PHP y MYSQL
+Proyecto para ingenieria de Software basado en un carrito de compras, utilizando PHP, MYSQL y Boostrap 5
 
 Es necesario tener instalado xampp: https://www.apachefriends.org/es/index.html
 
