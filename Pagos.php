@@ -60,13 +60,13 @@ $custRow = $query->fetch_assoc();
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link text-success" href="index.php">Inicio</a>
+                        <a class="nav-link text-success" href="index.php"><i class="bi bi-house-door-fill"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-success" href="VerCarta.php">Carrito de Compras</a>
+                        <a class="nav-link text-success" href="VerCarta.php"><i class="bi bi-cart-fill"></i> Carrito de Compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active bg-success" href="Pagos.php">Pagar</a>
+                        <a class="nav-link active bg-success" href="Pagos.php"><i class="bi bi-credit-card-fill"></i> Pagar</a>
                     </li>
                 </ul>
             </div>
