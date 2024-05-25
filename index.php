@@ -7,6 +7,8 @@ include 'Configuracion.php';
 <head>
     <title>Carrito de Compras</title>
     <meta charset="utf-8">
+    <link rel="icon" type="url"
+        href="https://s3.amazonaws.com/cdn.designcrowd.com/blog/39-Food-Delivery-Logos-That-Will-Leave-You-Hungry-For-More/food-delivery-logo-by-abhishek-choudhary-dribbble.jpg">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,8 +33,10 @@ include 'Configuracion.php';
 
         img {
             width: 100%;
+            height: 200px;
             padding: 0 !important;
             margin: 0 auto;
+            object-fit: cover;
         }
 
         .thumbnail {
@@ -43,7 +47,14 @@ include 'Configuracion.php';
         .thumbnail:hover {
             transform: translateY(-2px);
             cursor: pointer;
-            box-shadow: 0 12px 20px rgba(0,0,0,.04);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, .04);
+        }
+
+        .thumbnail {
+            max-width: 400px; /* Establecemos un ancho máximo para las tarjetas */
+            width: 100%; /* Hacemos que ocupen todo el ancho disponible */
+            height: auto;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -73,24 +84,27 @@ include 'Configuracion.php';
                 <a href="VerCarta.php" class="cart-link" title="Ver Carta">
                     <i class="bi bi-basket2-fill text-success"></i>
                 </a>
-                <div id="products" class="d-flex flex-wrap">
+                <div id="products" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     <?php
                     //get rows query
-                    $query = $db->query("SELECT * FROM mis_productos ORDER BY id DESC LIMIT 10");
+                    $query = $db->query("SELECT * FROM mis_productos ORDER BY id DESC LIMIT 15");
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
                             ?>
-                            <div class="item col-lg-4">
+                            <div class="col">
                                 <div class="card thumbnail shadow m-1">
                                     <img src="<?php echo $row["image_path"]; ?>" class="card-img-top"
                                         alt="<?php echo $row["name"]; ?>"> <!-- Aquí se agrega la imagen -->
                                     <div class="card-body">
                                         <h4 class="card-title"><?php echo $row["name"]; ?></h4>
                                         <p class="card-text"><?php echo $row["description"]; ?></p>
+                                        <p class="card-text"><i
+                                                class="bi bi-clock"></i><?php echo ' ' . $row["delivery_time"] . ' min'; ?></p>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <p class="fw-bolder lead text-success">
-                                                    <?php echo '$' . $row["price"] . ' MX'; ?></p>
+                                                    <?php echo '$' . $row["price"] . ' MX'; ?>
+                                                </p>
                                             </div>
                                             <div class="col-md-6">
                                                 <a class="btn btn-success"

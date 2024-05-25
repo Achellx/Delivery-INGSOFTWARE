@@ -7,7 +7,11 @@ if (!isset($_REQUEST['id'])) {
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="icon" type="url"
+    href="https://s3.amazonaws.com/cdn.designcrowd.com/blog/39-Food-Delivery-Logos-That-Will-Leave-You-Hungry-For-More/food-delivery-logo-by-abhishek-choudhary-dribbble.jpg">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
   <title>Orden Completado - PHP Carrito de Compras</title>
   <meta charset="utf-8">
   <style>
@@ -21,25 +25,22 @@ if (!isset($_REQUEST['id'])) {
     }
   </style>
 </head>
-</head>
 
 <body>
   <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-
+    <div class="card">
+      <div class="card-header">
         <ul class="nav nav-pills">
-          <li role="presentation" class="active"><a href="index.php">Volver</a></li>
+          <li class="nav-item"><a class="nav-link active bg-success" href="index.php"><i
+                class="bi bi-house-door-fill"></i> Volver</a></li>
         </ul>
       </div>
 
-      <div class="panel-body">
-
+      <div class="card-body">
         <h1>Estado de tu Requerimiento</h1>
         <p>La Orden se ha enviado exitósamente. El ID de tu pedido es <?php echo $_GET['id']; ?></p>
       </div>
     </div>
-    <!--Panek cierra-->
   </div>
 </body>
 
